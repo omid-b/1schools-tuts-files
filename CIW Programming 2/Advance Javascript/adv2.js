@@ -1,4 +1,4 @@
-// 1query
+/*// 1query
 
 (function(root){
 	root.oneQuery = function(id){
@@ -44,4 +44,4 @@ window.onload=function(){
 		})
 	});
 	
-}
+}*/

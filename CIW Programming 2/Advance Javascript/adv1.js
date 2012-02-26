@@ -1,3 +1,4 @@
+
 //var a=new Array(2,5,6,7);
 
 /*
@@ -141,6 +142,61 @@ alert(a);*/
 
 // --------------
 
+/*
+var test = function (){
+	var myObj=new Object();
+	myObj.a=1;
+	myObj.b=2;
+	return myObj;
+}
+
+var jafang = test();
+
+alert(jafang.b);
+*/
+
+/*var test = function (){
+	this.a=1;
+	this.b=2;
+	return this;
+}
+
+var jafang = test();
+
+alert(jafang.a);*/
+
+
+/*
+var test = function (a,b){
+	this.a=a;
+	this.b=b;
+}
+
+var test1 = new test(2,5);
+
+var test2 = new test(7,8);
+
+alert( test2.a );
+*/
+/*
+function person(fname,lname,age,eyecolor){
+	this.firstname=fname;
+	this.lastname=lname;
+	this.age=age;
+	this.eyecolor = eyecolor;
+	
+	this.sayHello = function(){
+		alert('salam, man '+ this.firstname+' '+this.lastname+'am');
+	}
+}
+
+var mohsen = new person('Mohsen','Niyazdel',23,'darkbrown');
+
+var mahdi = new person('Mahdi','Jannatiyan',25,'mishi!');
+
+mahdi.sayHello();
+*/
+
 
 /*
 function person(fname,lname,age,eyecolor){
@@ -151,8 +207,8 @@ function person(fname,lname,age,eyecolor){
 	this.children = new Array();
 	this.parents = new Array();
 	
-	this.harfbezan=function(){
-		alert("Hello, i'm "+this.firstname+' '+this.lastname);
+	this.sayHello = function(){
+		alert('Salam, man '+ this.firstname+' '+this.lastname+'am');
 	}
 	
 	this.addChild=function(child){
@@ -169,9 +225,14 @@ var majeed = new person("majid","abdollahi",46,'brown');
 majeed.addChild(ali);
 majeed.addChild(gholi);
 
+majeed.children[0].sayHello();
 
-majeed.children[1].parents[0].children[0].parents[0].harfbezan();
+ali.parents[0].sayHello();
+
+majeed.children[1].parents[0].children[0].parents[0].children[1].sayHello();
 */
+
+// ------------------
 
 
 /*
@@ -205,3 +266,20 @@ Loop({
 	
 });
 */
+
+
+
+window.oneQuery = function(id){
+	
+	this.element = document.getElementById(id);
+	
+	this.html = function(str){
+		this.element.innerHTML = str;
+	}
+	
+	return this;
+}
+
+
+oneQuery('')
+
