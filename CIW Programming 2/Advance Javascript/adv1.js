@@ -269,17 +269,4 @@ Loop({
 
 
 
-window.oneQuery = function(id){
-	
-	this.element = document.getElementById(id);
-	
-	this.html = function(str){
-		this.element.innerHTML = str;
-	}
-	
-	return this;
-}
-
-
-oneQuery('')
 
