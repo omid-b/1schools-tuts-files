@@ -235,11 +235,21 @@ majeed.children[1].parents[0].children[0].parents[0].children[1].sayHello();
 // ------------------
 
 
+/*function avrg(a,b){
+	return (a+b)/2;
+}
+
+
+var t = avrg(5,8);
+var t2 = avrg(t,9);
+alert(t2);*/
+
+
 /*
 function avrg(arr){
-	var sum=0;
-	for ( var n in arr) {
-		sum+=arr[n];
+	var sum = 0;
+	for(var i in arr){
+		sum+=i;
 	}
 	return sum/arr.length;
 }
@@ -247,26 +257,49 @@ function avrg(arr){
 
 var n=avrg([4,6,9]);
 alert(n);
+
 */
+
+
+
 
 /*
-
-function Loop(obj){
-	if(!obj.step) obj.step=1;
-	if(!obj.start) obj.start=0;
-	for(var i=obj.start;i<=obj.end;i+=obj.step){
-		document.write("<br/>i -&gt; "+i);
+var loop=function (start,end,step){
+	for(var i=start; i<=end; i+=step){
+		document.write(i+'<br />');
 	}
-	
-}
+};
 
-Loop({
-	step:2,
-	end:15
-	
-});
+loop(10,20,2);
+
 */
 
 
+var loop=function (obj){
+	if(!obj) obj={};
+	if(!obj.start) obj.start=1;
+	if(!obj.end) obj.end=10;
+	if(!obj.step) obj.step=1;
+	
+	for(var i=obj.start; i<=obj.end; i+=obj.step){
+		document.write(i+'<br />');
+	}
+};
 
+//loop({start:10,end:30,step:4});
 
+//loop({end:30,step:4,start:10});
+
+//loop({start:10,end:30});
+
+//loop({end:30});
+
+//loop({});
+
+//loop();
+
+loop({
+	start:10,
+	end:30,
+	step:4
+});

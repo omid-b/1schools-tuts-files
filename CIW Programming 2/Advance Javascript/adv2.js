@@ -1,5 +1,5 @@
 /*
-window.$ = function(id){
+var $ = function(id){
 	
 	this.element = document.getElementById(id);
 	
@@ -93,7 +93,7 @@ test2.css('color','#0F0');
 
 
 
-
+/*
 window.$ = function(id){
 	$.fns = function(){
 		this.element = document.getElementById(id);
@@ -122,55 +122,233 @@ $('txt').html('Test 1').css('color','#F0F');
 
 $('txt2').html('Test 2').css('color','#0FF').append(' :D');
 
+*/
+
+//----------- 
 
 
-//----------- felan bikhiyal baghiye ! irad dare
 
 
-/*// 1query
 
+// 1query
+/*
 (function(root){
-	root.oneQuery = function(id){
-		
-		this.element = root.document.getElementById(id);
-		
-		this.html = function(Html){
-			if(Html){
-				this.element.innerHTML = Html;
+	var oneQuery = function(id){
+		var fn=function(){
+			this.element = document.getElementById(id);
+			
+			this.html = function(str){
+				this.element.innerHTML = str;
 				return this;
-			}else{
-				return this.element.innerHTML;
 			}
-		};
-		
-		this.css=function(prs){
-			for(var i in prs){
-				this.element.style[i]=prs[i];
+			
+			this.append = function(str){
+				this.element.innerHTML += str;
+				return this;
 			}
-			//this.element.style[prprty]=value;
-			return this;
-		};
-		
-		this.click = function(fn){
-			this.element.onclick=fn;
+			
+			this.css = function(prpt,val){
+				this.element.style[prpt]=val;
+				return this;
+			}
 		}
 		
-		return this;
-		
+		return new fn();
 	}
 	
-	root.$=root.oneQuery;
+	root.oneQuery = root.$ = oneQuery;
 })(window);
 
 
-window.onload=function(){
+oneQuery('txt').html('Test 1').css('color','#F0F');
+
+$('txt2').html('Test 2').css('color','#0FF').append(' :D');
+*/
+
+
+
+/*
+(function(root){
+	var oneQuery = function(id){
+		var fn=function(){
+			this.element = document.getElementById(id);
+			
+			this.html = function(str){
+				this.element.innerHTML = str;
+				return this;
+			}
+			
+			this.append = function(str){
+				this.element.innerHTML += str;
+				return this;
+			}
+			
+			this.css = function(prpt,val){
+				this.element.style[prpt]=val;
+				return this;
+			}
+		}
+		
+		return new fn();
+	}
 	
-	$('txt').html('<b>ali</b>').click(function(){
+	root.oneQuery = root.$ = oneQuery;
+})(window);
+
+
+oneQuery('txt').html('Test 1').css('color','#F0F');
+
+$('txt2').html('Test 2').css('color','#0FF').append(' :D');
+*/
+
+
+//--------
+
+/*
+(function(root){
+	var oneQuery = function(id){
+		var fn=function(){
+			this.element = document.getElementById(id);
+			
+			this.html = function(str){
+				this.element.innerHTML = str;
+				return this;
+			}
+			
+			this.append = function(str){
+				this.element.innerHTML += str;
+				return this;
+			}
+			
+			this.css = function(stl){
+				for(var i in stl){
+					this.element.style[i]=stl[i];
+				}
+				return this;
+			}
+		}
+		
+		return new fn();
+	}
+	
+	root.oneQuery = root.$ = oneQuery;
+})(window);
+
+
+oneQuery('txt').html('Test 1').css({'color':'#F0F'});
+
+$('txt2').html('Test 2').css({
+	color:'#0FF',
+	fontSize:'18px'
+}).append(' :D');
+
+*/
+
+
+
+/*
+(function(root){
+	var oneQuery = function(id){
+		var fn=function(){
+			this.element = document.getElementById(id);
+			
+			this.html = function(str){
+				if(str===undefined){
+					return this.element.innerHTML;
+				}else{
+					this.element.innerHTML = str;
+					return this;
+				}
+			}
+			
+			this.append = function(str){
+				this.element.innerHTML += str;
+				return this;
+			}
+			
+			this.css = function(stl){
+				for(var i in stl){
+					this.element.style[i]=stl[i];
+				}
+				return this;
+			}
+		}
+		
+		return new fn();
+	}
+	
+	root.oneQuery = root.$ = oneQuery;
+})(window);
+
+
+$('txt2').html('Test 2');
+
+alert( $('txt2').html() );
+
+$('txt2').html('Test 3');
+
+*/
+
+
+
+(function(root){
+	var oneQuery = function(id){
+		var fn=function(){
+			this.element = document.getElementById(id);
+			
+			this.html = function(str){
+				if(str===undefined){
+					return this.element.innerHTML;
+				}else{
+					this.element.innerHTML = str;
+					return this;
+				}
+			}
+			
+			this.append = function(str){
+				this.element.innerHTML += str;
+				return this;
+			}
+			
+			this.css = function(stl){
+				for(var i in stl){
+					this.element.style[i]=stl[i];
+				}
+				return this;
+			}
+			
+			this.click = function(fn){
+				this.element.onclick=fn;
+				return this;
+			}
+			
+			this.mouseover = function(fn){
+				this.element.onmouseover = fn;
+				return this;
+			}
+		}
+		
+		return new fn();
+	}
+	
+	root.oneQuery = root.$ = oneQuery;
+})(window);
+
+
+/*$('txt2').html('Test 2').click(function(){
+	alert(1);
+}).mouseover(function(){
+	alert(2);
+});*/
+
+$('link').click(function(){
+	$('txt').html('<br/>Dadaaaaa !').mouseover(function(){
 		$('txt').css({
 			color:'red',
-			backgroundColor:'gray',
-			paddingLeft:'50px'
-		})
+			fontSize:'20px'
+		});
 	});
-	
-}*/
+});
+
+
+// Welcome to new world!, build your jQuery ;)
